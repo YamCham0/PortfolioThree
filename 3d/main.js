@@ -47,7 +47,7 @@ scene.add(pointLight, ambientLight)
 
 const lightHelper = new THREE.PointLightHelper(pointLight)
 const gridHelper = new THREE.GridHelper(200, 50);
-scene.add(lightHelper, gridHelper)
+// scene.add(lightHelper, gridHelper)
 
 const controls = new OrbitControls(camera, renderer.domElement);
 
@@ -55,7 +55,7 @@ const controls = new OrbitControls(camera, renderer.domElement);
 
 function addStar() {
   const geometry = new THREE.SphereGeometry(0.25, 24, 24);
-  const material = new THREE.MeshStandardMaterial({color: 0x03e7e7});
+  const material = new THREE.MeshStandardMaterial({color: 0xcc0000});
   const star = new THREE.Mesh(geometry, material);
 
   const [x, y, z]  = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(100));
@@ -74,6 +74,9 @@ scene.background = spaceTexture;
 
 function animate() {
   requestAnimationFrame(animate);
+  nes.rotation.x += 0.1;
+  nes.rotation.y += 0.02;
+  nes.rotation.z += 0.01;
 
   torus.rotation.x += 0.0;
   torus.rotation.y += 0.02;
