@@ -107,20 +107,8 @@ const spaceTexture = new THREE.TextureLoader().load('images/space.jpg');
 scene.background = spaceTexture;
 
 // cameraMovement
-function CamMov() {
 
-  const t = document.body.getBoundingClientRect().top;
-  earth.position.z += -1.0;
-  earth.position.x += 1.0;
-  earth.position.y += 1.0;
 
-  // camera rotation???
-  camera.position.z = t * -0.0;
-  camera.position.x = t * -0.0;
-  camera.position.y = t * -0.0;
-}
-
-document.body.onscroll = CamMov
 
 // Animation
 function animate() {
@@ -160,4 +148,18 @@ document.body.onscroll = () => {
         100
     ;(document.getElementById('scrollProgress')).innerText =
         'Scroll Progress : ' + scrollPercent.toFixed(2)
+
+  const t = document.body.getBoundingClientRect().top;
+  earth.position.z += -0.3;
+  earth.position.x += 0.3;
+  earth.position.y += -0.02;
+
+  // camera rotation???
+  camera.position.z = t * -0.10;
+  camera.position.x = t * -0.20;
+  camera.position.y = t * -0.30;
+
+  // earth.position.z += 0.0;
+  // earth.position.x += 0.05;
+  // earth.position.y += 0.3;
 }
