@@ -72,7 +72,7 @@ const earth = new THREE.Mesh(
   } )
 );
 
-earth.position.z = 10;
+// earth.position.y = 30;
 
 scene.add(earth)
 
@@ -110,13 +110,14 @@ scene.background = spaceTexture;
 function CamMov() {
 
   const t = document.body.getBoundingClientRect().top;
-  earth.rotation.z += 0.0;
-  earth.rotation.x += 0.00;
-  earth.rotation.y += -0.00;
+  earth.position.z += -1.0;
+  earth.position.x += 1.0;
+  earth.position.y += 1.0;
 
-  camera.position.z = t * -0.03;
+  // camera rotation???
+  camera.position.z = t * -0.0;
   camera.position.x = t * -0.0;
-  camera.position.y = t * -0.002;
+  camera.position.y = t * -0.0;
 }
 
 document.body.onscroll = CamMov
@@ -140,4 +141,23 @@ function animate() {
   renderer.render(scene, camera);
 }
 
+
 animate()
+
+
+//scrollPercent
+
+let scrollPercent = 0
+
+document.body.onscroll = () => {
+  
+    //calculate the current scroll progress as a percentage
+    scrollPercent =
+        ((document.documentElement.scrollTop || document.body.scrollTop) /
+            ((document.documentElement.scrollHeight ||
+                document.body.scrollHeight) -
+                document.documentElement.clientHeight)) *
+        100
+    ;(document.getElementById('scrollProgress')).innerText =
+        'Scroll Progress : ' + scrollPercent.toFixed(2)
+}

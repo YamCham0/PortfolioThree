@@ -9,5 +9,14 @@ main {
 }
 
 p {
-  color: yellowgreen
+  display: black;
+}
+
+#scrollProgress {
+  position: fixed;
+  color: red;
+  bottom: 10px;
+  left: 10px;
+  z-index: 99;
+  font-size: 8vh;
 }
