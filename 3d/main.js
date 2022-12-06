@@ -26,7 +26,7 @@ const nes = new THREE.Mesh(
   new THREE.MeshBasicMaterial({ map: nesTexture})
 );
 
-// scene.add(nes);
+scene.add(nes);
 
 // Sun
 
@@ -55,7 +55,7 @@ scene.add(pointLight, ambientLight)
 // Helpers
 const lightHelper = new THREE.PointLightHelper(pointLight)
 const gridHelper = new THREE.GridHelper(200, 50);
-scene.add(lightHelper, gridHelper)
+// scene.add(lightHelper, gridHelper)
 
 // orbitControls
 const controls = new OrbitControls(camera, renderer.domElement);
@@ -86,21 +86,24 @@ scene.add(earth)
 //   } )
 // );
 
+// Asteroids
+
+// Coming Soon!!!!
 
 // Stars
 function addStar() {
   const geometry = new THREE.SphereGeometry(0.25, 24, 24);
-  const material = new THREE.MeshStandardMaterial({color: 0xcc0000});
+  const material = new THREE.MeshStandardMaterial({color: 0xe6e6e6});
   const star = new THREE.Mesh(geometry, material);
 
-  const [x, y, z]  = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(100));
+  const [x, y, z]  = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(900));
 
   star.position.set(x, y, z);
   scene.add(star)
   
 }
 
-Array(200).fill().forEach(addStar)
+Array(800).fill().forEach(addStar)
 
 // Background
 const spaceTexture = new THREE.TextureLoader().load('images/space.jpg');
@@ -155,9 +158,9 @@ document.body.onscroll = () => {
   earth.position.y += -0.02;
 
   // camera rotation???
-  camera.position.z = t * -0.10;
-  camera.position.x = t * -0.20;
-  camera.position.y = t * -0.30;
+  camera.position.z = t * -0.03;
+  camera.position.x = t * -0.00;
+  camera.position.y = t * -0.00;
 
   // earth.position.z += 0.0;
   // earth.position.x += 0.05;
