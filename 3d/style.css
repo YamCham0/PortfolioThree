@@ -28,11 +28,11 @@ main {
 
 #scrollProgress {
   position: fixed;
-  color: rgb(91, 231, 231);
+  color: rgb(50, 97, 151);
   bottom: 10px;
   left: 10px;
   z-index: 99;
-  font-size: 8vh;
+  font-size: 4vh;
 }
 
 

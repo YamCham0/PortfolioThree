@@ -8,25 +8,26 @@ const renderer = new THREE.WebGLRenderer({canvas: document.querySelector('#bg'),
 
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
-camera.position.setZ(30);
+camera.position.setZ(-3);
+// camera.position.setY(53);
 
 renderer.render(scene, camera);
-// Torus
-const geometry = new THREE.TorusGeometry(15, 3, 16, 6);
-const material= new THREE.MeshStandardMaterial({color: 0xd3d300});
-const torus = new THREE.Mesh(geometry, material);
+// why Tourus???
+const geometryT = new THREE.CylinderGeometry(15, 3, 16, 6);
+const materialT= new THREE.MeshStandardMaterial({color: 0xd3d300});
+const torus = new THREE.Mesh(geometryT, materialT);
 
 // scene.add(torus);
 
 // Cube
-const nesTexture = new THREE.TextureLoader().load('images/nes.jpg');
+const nesTexture = new THREE.TextureLoader().load('images/smile.jpg');
 
 const nes = new THREE.Mesh(
   new THREE.BoxGeometry(6,6,6),
   new THREE.MeshBasicMaterial({ map: nesTexture})
 );
 
-scene.add(nes);
+// scene.add(nes);
 
 // Sun
 
@@ -45,10 +46,9 @@ scene.add(nes);
 // scene.add( spotLight );
 
 // Lighting
-const pointLight = new THREE.PointLight(0xffff80);
+const pointLight = new THREE.PointLight(0xffff80, 1, 100);
 
 pointLight.position.set(10,10,10);
-
 const ambientLight = new THREE.AmbientLight(0xffffff);
 scene.add(pointLight, ambientLight)
 
@@ -87,6 +87,67 @@ scene.add(earth)
 // );
 
 // Asteroids
+const asteroidTexture = new THREE.TextureLoader().load('images/asteroid.jpg');
+const normalAsteroidTexture = new THREE.TextureLoader().load('images/asteroidNormal.jpg');
+
+
+
+
+
+  
+
+const geometry = new THREE.TorusGeometry(3.192, 3.9204, 6, 4);
+const material = new THREE.MeshStandardMaterial({
+  map: asteroidTexture,
+  normalMap: normalAsteroidTexture});
+  const asteroid1 = new THREE.Mesh(geometry, material);
+  const asteroid2 = new THREE.Mesh(geometry, material);
+  const asteroid3 = new THREE.Mesh(geometry, material);
+
+  asteroid1.position.x = 150;
+  asteroid1.position.y = 10;
+  asteroid1.position.z = 10;
+  asteroid2.position.x = -30;
+  asteroid3.position.x = -200;
+  asteroid3.position.y = 30;
+  
+  
+  
+
+scene.add(asteroid1)
+scene.add(asteroid2)
+scene.add(asteroid3)
+
+
+
+
+// const [a, b, c]  = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(900));
+
+// asteroid.position.set(a, b, c);
+
+
+// Array(30).fill().forEach(addAsteroids)
+
+// Create function that calls the 2 functions
+// function addAsteroids() {
+//   const asteroidTexture = new THREE.TextureLoader().load('images/asteroid.jpg');
+//   const normalAsteroidTexture = new THREE.TextureLoader().load('images/asteroidNormal.jpg');
+
+//   const geometry = new THREE.TorusGeometry(3.192, 3.9204, 6, 4);
+//   const material = new THREE.MeshStandardMaterial({
+//     color: 0xe6e6e6,
+//     map: asteroidTexture,
+//     normalMap: normalAsteroidTexture});
+//   const asteroid = new THREE.Mesh(geometry, material);
+
+//   const [x, y, z]  = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(300));
+
+//   asteroid.position.set(x, y, z);
+
+
+//   scene.add(asteroid)
+  
+// }
 
 // Coming Soon!!!!
 
@@ -109,31 +170,37 @@ Array(800).fill().forEach(addStar)
 const spaceTexture = new THREE.TextureLoader().load('images/space.jpg');
 scene.background = spaceTexture;
 
-// cameraMovement
-
-
 
 // Animation
-function animate() {
-  requestAnimationFrame(animate);
-  nes.rotation.x += 0.007;
-  nes.rotation.y += 0.005;
-  nes.rotation.z += 0.0;
+function animation() {
+  requestAnimationFrame(animation);
+  asteroid1.rotation.x += 0.0;
+  asteroid1.rotation.y += 0.01;
+  asteroid1.rotation.z += 0.001;
+  
+  asteroid2.rotation.x += 0.01;
+  asteroid2.rotation.y += 0.001;
+  asteroid2.rotation.z += 0.0;
+  
+  asteroid3.rotation.x += 0.001;
+  asteroid3.rotation.y += 0.0;
+  asteroid3.rotation.z += 0.01;
 
   earth.rotation.x += 0.00;
   earth.rotation.y += 0.01;
   earth.rotation.z += 0.00;
-
-  torus.rotation.x += 0.0;
-  torus.rotation.y += 0.02;
-  torus.rotation.z += 0.01;
+  camera.position.z += 0.001;
+  camera.position.y += 0.001;
+  // torus.rotation.x += 0.0;
+  // torus.rotation.y += 0.02;
+  // asteroid.rotation.z += 0.01;
 
   controls.update();
   renderer.render(scene, camera);
 }
 
 
-animate()
+animation()
 
 
 //scrollPercent
@@ -153,16 +220,35 @@ document.body.onscroll = () => {
         'Scroll Progress : ' + scrollPercent.toFixed(2)
 
   const t = document.body.getBoundingClientRect().top;
-  earth.position.z += -0.3;
-  earth.position.x += 0.3;
-  earth.position.y += -0.02;
+  earth.position.z += -0.1;
+  earth.position.x += 0.02;
+  earth.position.y += 0.03;
 
   // camera rotation???
+  // camera.rotation.z = t * -0.01;
+  camera.rotation.x = t * -2.0;
+  camera.rotation.y = t * 0.5;
   camera.position.z = t * -0.03;
-  camera.position.x = t * -0.00;
-  camera.position.y = t * -0.00;
+  // camera.position.x = t * -0.007;
+  // camera.position.y = t * -0.003;
 
-  // earth.position.z += 0.0;
+  asteroid1.rotation.x += 0.1;
+  asteroid2.rotation.z += 0.1;
+  asteroid3.rotation.y += 0.1;
+  
+  asteroid1.position.x += -0.9;
+  asteroid1.position.y += 0.01;
+  asteroid1.position.z += 0.02;
+
+  asteroid2.position.x += 0.5;
+  asteroid2.position.y += -0.0;
+  asteroid2.position.z += -0.3;
+
+  asteroid3.position.x += 1.0;
+  asteroid3.position.y += 0.0;
+  asteroid3.position.z += 0.00;
+
   // earth.position.x += 0.05;
   // earth.position.y += 0.3;
 }
+
