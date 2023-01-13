@@ -1,7 +1,7 @@
 import './style.css';
 import * as THREE from 'three';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
-import bootstrap from 'bootstrap';
+// import bootstrap from 'bootstrap';
 // ADD carousell from Bootstrap with links and images to the projects
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -253,3 +253,38 @@ document.body.onscroll = () => {
   // earth.position.y += 0.3;
 }
 
+
+
+
+var slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("slide");
+    if (n > slides.length) {slideIndex = 1}    
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+    }
+    slides[slideIndex-1].style.display = "block";  
+  }
+  var prev = document.getElementById("prev");
+  var next = document.getElementById("next");
+
+  
+  prev.addEventListener("click", function() {
+    plusSlides(-1);
+  });
+
+  next.addEventListener("click", function() {
+    plusSlides(1);
+  });
