@@ -1,17 +1,18 @@
 {
   "name": "3d",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "homepage": ".",
   "engines": {
     "node": "18.13.0"
   },
-
   "scripts": {
     "dev": "vite",
-    "start": "npm run build",
+    "heroku-postbuild": "npm run build",
+    "vite build": "npm run build",
     "preview": "vite preview"
   },
   "devDependencies": {
+    "vite": "^2.9.15"
   },
   "dependencies": {
     "three": "^0.136.0"
