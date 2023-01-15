@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "vite",
     "heroku-postbuild": "npm run build",
-    "build": "vite build",
+    "start": "vite build",
     "preview": "vite preview"
   },
   "devDependencies": {
