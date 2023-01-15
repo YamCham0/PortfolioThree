@@ -8,7 +8,7 @@
 
   "scripts": {
     "dev": "vite",
-    "heroku-postbuild": "node heroku-postbuild.js",
+    "heroku-postbuild": "npm run build",
     "build": "vite build",
     "preview": "vite preview"
   },
