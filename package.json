@@ -2,6 +2,10 @@
   "name": "3d",
   "version": "0.0.0",
   "homepage": ".",
+  "engines": {
+    "node": "18.x"
+  },
+
   "scripts": {
     "dev": "vite",
     "heroku-postbuild": "node heroku-postbuild.js",
