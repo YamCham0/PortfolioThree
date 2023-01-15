@@ -97,13 +97,13 @@ const normalAsteroidTexture = new THREE.TextureLoader().load('images/asteroidNor
 
   
 
-const geometry = new THREE.TorusGeometry(3.192, 3.9204, 6, 4);
-const material = new THREE.MeshStandardMaterial({
+const geometryA = new THREE.TorusGeometry(3.192, 3.9204, 6, 4);
+const materialA = new THREE.MeshStandardMaterial({
   map: asteroidTexture,
   normalMap: normalAsteroidTexture});
-  const asteroid1 = new THREE.Mesh(geometry, material);
-  const asteroid2 = new THREE.Mesh(geometry, material);
-  const asteroid3 = new THREE.Mesh(geometry, material);
+  const asteroid1 = new THREE.Mesh(geometryA, materialA);
+  const asteroid2 = new THREE.Mesh(geometryA, materialA);
+  const asteroid3 = new THREE.Mesh(geometryA, materialA);
 
   asteroid1.position.x = 150;
   asteroid1.position.y = 10;
@@ -147,8 +147,28 @@ scene.add(asteroid3)
 
 
 //   scene.add(asteroid)
-  
+
 // }
+
+
+
+const squiTexture = new THREE.TextureLoader().load('images/squirell.jpg');
+
+const squirell = new THREE.Mesh(
+  new THREE.PlaneGeometry( 40, 50, ),
+  new THREE.MeshBasicMaterial({color: 0xffff00, side: THREE.DoubleSide, map: squiTexture})
+);
+
+
+squirell.position.y = -10;
+squirell.position.x = 150;
+squirell.position.z = 50;
+
+
+
+scene.add( squirell );
+
+
 
 // Coming Soon!!!!
 
@@ -192,6 +212,9 @@ function animation() {
   earth.rotation.z += 0.00;
   camera.position.z += 0.001;
   camera.position.y += 0.001;
+
+  squirell.rotation.y += 0.02;
+
   // torus.rotation.x += 0.0;
   // torus.rotation.y += 0.02;
   // asteroid.rotation.z += 0.01;
@@ -249,6 +272,7 @@ document.body.onscroll = () => {
   asteroid3.position.y += 0.0;
   asteroid3.position.z += 0.00;
 
+  squirell.position.x += -1.0;
   // earth.position.x += 0.05;
   // earth.position.y += 0.3;
 }

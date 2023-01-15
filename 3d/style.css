@@ -71,7 +71,7 @@ canvas {
   
   blockquote p {
     color: black;
-    background-color: rgb(170, 149, 149);
+    background-color: rgba(169, 250, 236, 0.329);
     font-size: 4rem;
     display: inline;
     line-height: 1;
