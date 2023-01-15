@@ -21,12 +21,12 @@ const torus = new THREE.Mesh(geometryT, materialT);
 // scene.add(torus);
 
 // Cube
-const nesTexture = new THREE.TextureLoader().load('images/smile.jpg');
+// const nesTexture = new THREE.TextureLoader().load('images/smile.jpg');
 
-const nes = new THREE.Mesh(
-  new THREE.BoxGeometry(6,6,6),
-  new THREE.MeshBasicMaterial({ map: nesTexture})
-);
+// const nes = new THREE.Mesh(
+//   new THREE.BoxGeometry(6,6,6),
+//   new THREE.MeshBasicMaterial({ map: nesTexture})
+// );
 
 // scene.add(nes);
 
@@ -62,7 +62,7 @@ const gridHelper = new THREE.GridHelper(200, 50);
 const controls = new OrbitControls(camera, renderer.domElement);
 
 // Earth
-const earthTexture = new THREE.TextureLoader().load('images/earthDay.jpg');
+const earthTexture = new THREE.TextureLoader().load('images/earthDay.png');
 const normalEarthTexture = new THREE.TextureLoader().load('images/normalEarth.jpg');
 
 const earth = new THREE.Mesh(
