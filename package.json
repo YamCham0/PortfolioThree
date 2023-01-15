@@ -3,13 +3,13 @@
   "version": "0.0.0",
   "homepage": ".",
   "engines": {
-    "node": "18.x"
+    "node": "18.13.0"
   },
 
   "scripts": {
     "dev": "vite",
-    "heroku-postbuild": "npm run build",
-    "start": "vite build",
+    "start": "npm run build",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "devDependencies": {
