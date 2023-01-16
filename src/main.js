@@ -62,8 +62,8 @@ const gridHelper = new THREE.GridHelper(200, 50);
 const controls = new OrbitControls(camera, renderer.domElement);
 
 // Earth
-const earthTexture = new THREE.TextureLoader().load('images/earthDay.png');
-const normalEarthTexture = new THREE.TextureLoader().load('images/normalEarth.jpg');
+const earthTexture = new THREE.TextureLoader().load('/images/earthDay.jpg');
+const normalEarthTexture = new THREE.TextureLoader().load('/images/normalEarth.jpg');
 
 const earth = new THREE.Mesh(
   new THREE.SphereGeometry(10, 32, 16),
@@ -88,8 +88,8 @@ scene.add(earth)
 // );
 
 // Asteroids
-const asteroidTexture = new THREE.TextureLoader().load('images/asteroid.jpg');
-const normalAsteroidTexture = new THREE.TextureLoader().load('images/asteroidNormal.jpg');
+const asteroidTexture = new THREE.TextureLoader().load('/images/asteroid.jpg');
+const normalAsteroidTexture = new THREE.TextureLoader().load('/images/asteroidNormal.jpg');
 
 
 
@@ -152,7 +152,7 @@ scene.add(asteroid3)
 
 
 
-const squiTexture = new THREE.TextureLoader().load('images/squirell.jpg');
+const squiTexture = new THREE.TextureLoader().load('/images/squirell.jpg');
 
 const squirell = new THREE.Mesh(
   new THREE.PlaneGeometry( 40, 50, ),
@@ -188,7 +188,7 @@ function addStar() {
 Array(800).fill().forEach(addStar)
 
 // Background
-const spaceTexture = new THREE.TextureLoader().load('images/space.jpg');
+const spaceTexture = new THREE.TextureLoader().load('/images/space.jpg');
 scene.background = spaceTexture;
 
 
